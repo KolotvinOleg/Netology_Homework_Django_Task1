@@ -28,3 +28,13 @@ DATA = {
 #     'ингредиент2': количество2,
 #   }
 # }
+def get_info_about_food(request, food: str):
+    food_menu = DATA.get(food, [])
+    recipe = food_menu.copy()
+    count = int(request.GET.get('servings', 1))
+    for item in recipe:
+        recipe[item] = round(recipe[item]*count, 2)
+    context = {
+        'recipe': recipe,
+    }
+    return render(request, 'calculator/index.html', context=context)
