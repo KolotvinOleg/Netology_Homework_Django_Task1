@@ -1,20 +1,18 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Каталог книг{% endblock %}
+{% block title %}Книга - {{ book.name }}{% endblock %}
 {% block content %}
     <div class="container">
         <div class="header">
-            <h1><a href="/books">Каталог</a></h1>
+            <h1><a href="/books">Кaталог книг</a></h1>
         </div>
         <div class="row">
-            {% for book in books %}
                 <div class="book col-md-4">
-                    <a href="{% url 'book' book.slug %}"><h2>{{ book.name }}</h2></a>
+                    <h1>Книга - {{ book.name }}</h1>
                     <p>Автор: {{ book.author }}</p>
                     <p>Дата публикации: {{ book.pub_date }}</p>
                 </div>
-            {% endfor %}
         </div>
     </div>
 {% endblock %}

@@ -3,7 +3,7 @@
 
 {% block title %}Каталог книг{% endblock %}
 {% block content %}
-    <div class="container">
+   <div class="container">
         <div class="header">
             <h1><a href="/books">Каталог</a></h1>
         </div>
@@ -16,5 +16,13 @@
                 </div>
             {% endfor %}
         </div>
+           <nav>
+                {% if left_page %}
+                    <a href="{% url 'books-by-date' left_page %}">{{ left_page }}</a>
+                {% endif %}
+                {% if right_page %}
+                   | <a href="{% url 'books-by-date' right_page %}">{{ right_page }}</a>
+                {% endif %}
+           </nav>
     </div>
 {% endblock %}
